@@ -33,10 +33,10 @@ div.scroller {
 }
 .sel-label {
   display: flex;
+  align-items: center;
   justify-content: flex-start;
 }
 div.sel-inner {
-  align-self: center;
 }
 div.multititle {
   display: inline-block;
@@ -53,6 +53,11 @@ div.randButton {
 .error{
   background-color:red;
   color:white;
+}
+.duration{
+  margin-left: auto;
+  margin-right: 3px;
+  background: lightgray;
 }
 /* this just prevents double-click-selection */
 .no_selection {
@@ -291,7 +296,7 @@ var data = [
       {id:"6x19",num:"#136 6x19",title:"The Fault in Our Cutie Marks",tags:["cmc","gryphon","gabby"]},
       {id:"6x20",num:"#137 6x20",title:"Viva Las Pegasus",tags:["applejack","fluttershy","bootycall","flimflam","laspegasus"]},
       {id:"6x21",num:"#138 6x21",title:"Every Little Thing She Does",tags:["starlight"]},
-      {id:"6x22",num:"#139 6x22",title:"PPOV",tags:["applejack","rarity","pinkie","shipping"]},
+      {id:"6x22",num:"#139 6x22",title:"P.P.O.V.",tags:["applejack","rarity","pinkie","shipping"]},
     ]}
   ]},
   {type:"category",title:"FiMFlamFilosophy / Dawn Somewhere",tags:["fimflam"],content:[
@@ -431,13 +436,23 @@ function boxItem (defObj,i_tags,parentDiv,level){
   var tagSelection = false;
   var hidden = false;
   
+  // duration stuffs
+  callback.duration = 0;
+  if (defObj.duration){callback.duration = timeToSeconds(defObj.duration)}
+  
   var tags = {};
   for (var tag in defObj.tags){tags[defObj.tags[tag]] = true}
   for (var tag in i_tags){tags[i_tags[tag]] = true}
   for (var tag in tags){alltags[tag] = (alltags[tag] || 0)+1}
   callback.tags = tags;
 
-  var dom = buildSelDom(defObj.id,defObj.num,defObj.title,Object.keys(tags).join());
+  var dom = buildSelDom(
+    defObj.id,
+    defObj.num,
+    defObj.title,
+    Object.keys(tags).join(),
+    callback.duration
+  );
   if (!parentDiv){parentDiv = selections_div}
   dom.div.classList.add("level"+level);
   parentDiv.appendChild(dom.div);
@@ -501,6 +516,8 @@ function boxMultiItem (defObj,i_tags,parentDiv,level){
   //      multidiv
   //        <group selection>
   
+  callback.duration = 0;
+  
   var tags = {};
   for (var tag in defObj.tags){tags[defObj.tags[tag]] = true}
   for (var tag in i_tags){tags[i_tags[tag]] = true}
@@ -516,10 +533,17 @@ function boxMultiItem (defObj,i_tags,parentDiv,level){
 
     nums.push(defObj.parts[ep].num);
     singles.push(s);
+    callback.duration += s.duration;
   }
   containerdiv.appendChild(singlesdiv);
   
-  var dom = buildSelDom(defObj.combined.id,nums,defObj.combined.title,Object.keys(tags).join());
+  var dom = buildSelDom(
+    defObj.combined.id,
+    nums,
+    defObj.combined.title,
+    Object.keys(tags).join(),
+    callback.duration
+  );
   var multidiv = document.createElement("div");
   multidiv.appendChild(dom.div);
   containerdiv.appendChild(multidiv);
@@ -683,7 +707,7 @@ function categoryItem(defObj,i_tags,parentDiv,level){
 //
 //  common dom elements builder
 //
-function buildSelDom(id,num,title,hover){
+function buildSelDom(id,num,title,hover,duration){
   var checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.id = "c_" + id;
@@ -713,6 +737,14 @@ function buildSelDom(id,num,title,hover){
   label.appendChild(numdiv);
   label.appendChild(document.createTextNode("\u00A0"));
   label.appendChild(titlediv);
+  
+  if (duration) {
+    var durationDiv = document.createElement("div");
+    //durationDiv.classList.add("sel-inner");
+    durationDiv.classList.add("duration");
+    durationDiv.appendChild(document.createTextNode(secondsToTime(duration)));
+    label.appendChild(durationDiv);
+  }
   
   var div = document.createElement("div");
   div.id = "s_" + id;
@@ -836,11 +868,6 @@ function secondsToTime(seconds){
   time += ":" + ((secs<10) ? "0"+secs : secs);
   return time;
 }
-console.log(timeToSeconds("1:02:03"));
-console.log(secondsToTime(3723));
-console.log(secondsToTime(723));
-console.log(secondsToTime(103));
-console.log(secondsToTime(23));
 
 // copied from http://stackoverflow.com/a/11811767
 function getSortedKeys(obj) {
