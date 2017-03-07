@@ -368,23 +368,37 @@ function traverseData(arr,tags){
 }
 traverseData(data);
 
-function setGrouped(grouped){
+//
+// BINDINGS / init
+//
+
+// "Group Multiparters" checkbox
+var multi_group_checkbox = document.getElementById("multi_group");
+function setGrouped(){
   for (var item in items){
-    items[item].setGroup(grouped);
+    items[item].setGroup(multi_group_checkbox.checked);
   }
 }
-setGrouped(document.getElementById("multi_group").checked);
+multi_group_checkbox.onclick = setGrouped;
+setGrouped();
 
-function setInclGroups(included){
+// "Include Multiparters" checkbox
+var include_groups_checkbox = document.getElementById("include_groups");
+function setInclGroups(){
   for (var item in items){
-    items[item].setInclGroups(included);
+    items[item].setInclGroups(include_groups_checkbox.checked);
   }
 }
-setInclGroups(document.getElementById("include_groups").checked);
+include_groups_checkbox.onclick = setInclGroups;
+setInclGroups();
 
+// Check / Uncheck All
 function sel_checkall(check){
   for (var item in items){items[item].check(check)}
 }
+document.getElementById('b_checkall').onclick = function(){sel_checkall(true)};
+document.getElementById('b_uncheckall').onclick = function(){sel_checkall(false)};
+
 
 var boxesdiv = document.getElementById('d_boxes');
 var autoboxesdiv = document.getElementById('d_autoboxes');
@@ -523,11 +537,6 @@ function randSelect(){
     errdiv.innerHTML = "WE GOT NOTHING";
   }
 }
-
-// onclick bindings  TODO: restructure the rest to do this better
-var include_groups_button = document.getElementById("include_groups");
-document.getElementById("include_groups").onclick = setInclGroups(include_groups_button.checked);
-document.getElementById("multi_group").onclick = setGrouped(this.checked);
-
+document.getElementById('randButton').onclick = randSelect;
 
 }

@@ -19,14 +19,14 @@
   </div>
   <div class="split scroller">
     <div id="d_sel_controls">
-      <button onclick="sel_checkall(true)">Check All</button>
-      <button onclick="sel_checkall(false)">Uncheck All</button>
+      <button id="b_checkall">Check All</button>
+      <button id="b_uncheckall">Uncheck All</button>
       <hr/>
     </div>
     <div id="d_selections"></div>
   </div>
   <div id="d_result" class="split" style="position: absolute; right: 0;">
-    <div id="randButton" class="randButton no_selection" onClick="randSelect()">PULL FROM THE BOX!</div>
+    <div id="randButton" class="randButton no_selection">PULL FROM THE BOX!</div>
     <br/>
     <label for="uncheck_on_win"><input type="checkbox" id="uncheck_on_win"/>Uncheck on Win</label>
     <br/><br/>
