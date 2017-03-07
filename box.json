@@ -148,7 +148,7 @@
         {"id":"5x19","num":"#110 5x19","title":"The One Where Pinkie Pie Knows","tags":["pinkie","shiningarmor","cadance"]},
         {"id":"5x20","num":"#111 5x20","title":"Hearthbreakers","tags":["pinkie","apples","maud","limestone","marble","applejack","hearthswarming"]},
         {"id":"5x21","num":"#112 5x21","title":"Scare Master","tags":["fluttershy","nightmarenight"]},
-        {"id":"5x22","num":"#113 5x22","title":"What About Discord?","tags":["discord","twilight","twicrazy"]},
+        {"id":"5x22","num":"#113 5x22","title":"What About Discord?","tags":["discord","twilight","twicrazy","zecora"]},
         {"id":"5x23","num":"#114 5x23","title":"The Hooffields and McColts","tags":["fluttershy","twilight","bootycall"]},
         {"id":"5x24","num":"#115 5x24","title":"The Mane Attraction","tags":["applejack","coloratura"]},
         {"type":"multipart","parts":[
@@ -194,6 +194,12 @@
           "id":"6x25-6x26","title":"To Where and Back Again"
         }}
         ]}
+    ]},
+    {"type":"category","title":"Equestria Girls","tags":["eqg"],"content":[
+      {"id":"eqg01","num":"1","title":"Equestria Girls","tags":[]},
+      {"id":"eqg02","num":"2","title":"Equestria Girls: Rainbow Rocks","tags":[]},
+      {"id":"eqg03","num":"3","title":"Equestria Girls: Friendship Games","tags":[]},
+      {"id":"eqg04","num":"4","title":"Equestria Girls: Legend of Everfree","tags":[]}
     ]},
     {"type":"category","title":"FiMFlamFilosophy / Dawn Somewhere","tags":["fimflam"],"content":[
       {"type":"category","title":"Rainbow Dash Presents","tags":["rdp"],"content":[
@@ -312,6 +318,7 @@
         {"name":"MojoBox (just showing multi-tag boxes)","tags":"applejack rarity"}
       ]}
       ]},
+    {"name":"Equestria Girls","tags":"eqg"},
     {"name":"FiM-Related FanWorks","content":[
       {"name":"FiMFlamFilosophy","tags":"fimflam","content":[
         {"name":"Rainbow Dash Presents","tags":"rdp"},
