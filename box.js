@@ -34,7 +34,10 @@ function boxItem (defObj,i_tags,parentDiv,level){
   callback.duration = 0;
   if (defObj.duration){callback.duration = timeToSeconds(defObj.duration)}
   
+  // handle tags
   var tags = {};
+  var numRe = /\d+$/.exec(defObj.num);  // get ep number
+  if (numRe != null) {tags["ep" + Number(numRe[0])] = true;}
   for (var tag in defObj.tags){tags[defObj.tags[tag]] = true}
   for (var tag in i_tags){tags[i_tags[tag]] = true}
   for (var tag in tags){alltags[tag] = (alltags[tag] || 0)+1}
