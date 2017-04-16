@@ -277,7 +277,8 @@
         {"name":"S3","tags":"ponys3","itags":""},
         {"name":"S4","tags":"ponys4","itags":""},
         {"name":"S5","tags":"ponys5","itags":""},
-        {"name":"S6","tags":"ponys6","itags":""}
+        {"name":"S6","tags":"ponys6","itags":""},
+        {"name":"S7","tags":"ponys7","itags":""}
       ]},
       {"name":"Characters","content":[
         {"name":"Mane 6","tags":"mane6","content":[
