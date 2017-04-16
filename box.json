@@ -193,7 +193,11 @@
         ],"combined":{
           "id":"6x25-6x26","title":"To Where and Back Again"
         }}
-        ]}
+        ]},
+      {"type":"category","title":"Season 7","tags":["ponys7"],"content":[
+        {"id":"6x18","num":"#144 7x01","title":"Celestial Advice","tags":["celestia","twilight","discord","twicrazy"]},
+        {"id":"6x19","num":"#145 7x02","title":"All Bottled Up","tags":["starlight","trixie"]}
+      ]}
     ]},
     {"type":"category","title":"Equestria Girls","tags":["eqg"],"content":[
       {"id":"eqg01","num":"1","title":"Equestria Girls","tags":[]},
